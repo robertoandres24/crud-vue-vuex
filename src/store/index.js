@@ -33,9 +33,7 @@ export default new Vuex.Store({
       dispatch("fetchUsers");
     },
     async deleteUser({ dispatch }, user) {
-      console.log("deleteUser -> user", user);
-      const { data: userDeleted } = await $axios.delete(`people/${user.id}`);
-      console.log("deleteUser -> userDeleted", userDeleted);
+      await $axios.delete(`people/${user.id}`);
       dispatch("fetchUsers");
     }
   },

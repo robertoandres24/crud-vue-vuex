@@ -56,7 +56,7 @@
       <!-- A custom formatted column -->
       <template v-slot:cell(delete)="data">
         <div class="b-icon h4 text-danger mb-0">
-          <b-icon-trash @click="deleteUser(data.item)"></b-icon-trash>
+          <b-icon-trash @click="remove(data.item)"></b-icon-trash>
         </div>
       </template>
     </b-table>
@@ -83,6 +83,7 @@ export default {
     return {
       perPage: 10,
       currentPage: 1,
+      boxOne: "",
       fields: [
         // Regular columns
         "id",
@@ -127,6 +128,19 @@ export default {
       this.form.email = "";
       this.form.firstName = "";
       this.form.lastName = "";
+    },
+    remove(user) {
+      this.boxOne = "";
+      this.$bvModal
+        .msgBoxConfirm("Are you sure you want to delete this user?")
+        .then(value => {
+          if (!value) return;
+          this.deleteUser(user);
+        })
+        .catch(err => {
+          // An error occurred
+          console.log(err);
+        });
     }
   }
 };
