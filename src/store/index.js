@@ -31,6 +31,12 @@ export default new Vuex.Store({
       const { data: userCreated } = await $axios.post("people", user);
       console.log("saveUser -> userCreated", userCreated);
       dispatch("fetchUsers");
+    },
+    async deleteUser({ dispatch }, user) {
+      console.log("deleteUser -> user", user);
+      const { data: userDeleted } = await $axios.delete(`people/${user.id}`);
+      console.log("deleteUser -> userDeleted", userDeleted);
+      dispatch("fetchUsers");
     }
   },
   modules: {}

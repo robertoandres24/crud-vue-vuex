@@ -1,60 +1,6 @@
 {
   "people": [
     {
-      "id": 1,
-      "first_name": "Earlie",
-      "last_name": "Upstell",
-      "email": "eupstell0@aboutads.info"
-    },
-    {
-      "id": 2,
-      "first_name": "Neely",
-      "last_name": "Giovannini",
-      "email": "ngiovannini1@naver.com"
-    },
-    {
-      "id": 3,
-      "first_name": "Adelice",
-      "last_name": "Driver",
-      "email": "adriver2@europa.eu"
-    },
-    {
-      "id": 4,
-      "first_name": "Thorpe",
-      "last_name": "Aked",
-      "email": "taked3@walmart.com"
-    },
-    {
-      "id": 5,
-      "first_name": "Matthieu",
-      "last_name": "Antusch",
-      "email": "mantusch4@umn.edu"
-    },
-    {
-      "id": 6,
-      "first_name": "Steven",
-      "last_name": "Roth",
-      "email": "sroth5@pen.io"
-    },
-    {
-      "id": 7,
-      "first_name": "Dennis",
-      "last_name": "Bessom",
-      "email": "dbessom6@opensource.org"
-    },
-    {
-      "id": 8,
-      "first_name": "Gisella",
-      "last_name": "Kohnert",
-      "email": "gkohnert7@ehow.com"
-    },
-    {
-      "id": 9,
-      "first_name": "Alane",
-      "last_name": "Haslum",
-      "email": "ahaslum8@nasa.gov"
-    },
-    {
       "id": 10,
       "first_name": "Gracie",
       "last_name": "Madgett",
@@ -181,12 +127,6 @@
       "email": "cprettejohnst@webnode.com"
     },
     {
-      "id": 31,
-      "first_name": "Luelle",
-      "last_name": "Godier",
-      "email": "lgodieru@yahoo.com"
-    },
-    {
       "id": 32,
       "first_name": "Haven",
       "last_name": "Esposi",
@@ -197,12 +137,6 @@
       "first_name": "Nobe",
       "last_name": "Boteman",
       "email": "nbotemanw@foxnews.com"
-    },
-    {
-      "id": 34,
-      "first_name": "Dani",
-      "last_name": "Emburey",
-      "email": "dembureyx@forbes.com"
     },
     {
       "id": 35,

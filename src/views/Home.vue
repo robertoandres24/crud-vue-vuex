@@ -49,9 +49,17 @@
       hover
       id="my-table"
       :items="users"
+      :fields="fields"
       :per-page="perPage"
       :current-page="currentPage"
-    ></b-table>
+    >
+      <!-- A custom formatted column -->
+      <template v-slot:cell(delete)="data">
+        <div class="b-icon h4 text-danger mb-0">
+          <b-icon-trash @click="deleteUser(data.item)"></b-icon-trash>
+        </div>
+      </template>
+    </b-table>
     <b-pagination
       v-model="currentPage"
       :total-rows="rows"
@@ -75,6 +83,15 @@ export default {
     return {
       perPage: 10,
       currentPage: 1,
+      fields: [
+        // Regular columns
+        "id",
+        "first_name",
+        "last_name",
+        "email",
+        // A virtual column made up from two fields
+        { key: "delete", label: "Actions" }
+      ],
       form: {
         firstName: "",
         lastName: "",
@@ -94,7 +111,7 @@ export default {
     await this.fetchUsers();
   },
   methods: {
-    ...mapActions(["fetchUsers", "saveUser"]),
+    ...mapActions(["fetchUsers", "saveUser", "deleteUser"]),
     async onSubmit(evt) {
       evt.preventDefault();
       const vm = this;
@@ -114,3 +131,8 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.b-icon {
+  cursor: pointer;
+}
+</style>
