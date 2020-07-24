@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <h1 class="my-3">CRUD VUE/VUEX</h1>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+    <b-form @submit="onSubmit" @reset="onReset">
       <b-form-group
         id="input-group-1"
         label="Your First Name:"
@@ -41,7 +41,7 @@
       </b-form-group>
       <div class="my-3">
         <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset</b-button>
+        <b-button class="mx-2" type="reset" variant="danger">Reset</b-button>
       </div>
     </b-form>
     <b-table
@@ -64,6 +64,7 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Home",
@@ -74,54 +75,41 @@ export default {
     return {
       perPage: 10,
       currentPage: 1,
-      users: [],
       form: {
         firstName: "",
         lastName: "",
         email: ""
-      },
-      show: true
+      }
     };
   },
   computed: {
+    ...mapGetters({
+      users: "getUsers"
+    }),
     rows() {
       return this.users.length;
     }
   },
   async created() {
-    this.fetchUsers();
+    await this.fetchUsers();
   },
   methods: {
-    async fetchUsers() {
-      const { data: users } = await this.$axios.get("people");
-      this.users = users;
-    },
-    async saveUser() {
+    ...mapActions(["fetchUsers", "saveUser"]),
+    async onSubmit(evt) {
+      evt.preventDefault();
       const vm = this;
       const user = {
         first_name: vm.form.firstName,
         last_name: vm.form.lastName,
         email: vm.form.email
       };
-      const { data: userCreated } = await this.$axios.post("people", user);
-      console.log("saveUser -> userCreated", userCreated);
+      await this.saveUser(user);
       this.onReset();
     },
-    onSubmit(evt) {
-      evt.preventDefault();
-      this.saveUser();
-    },
     onReset() {
-      // evt.preventDefault();
-      // Reset our form values
       this.form.email = "";
       this.form.firstName = "";
       this.form.lastName = "";
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
     }
   }
 };
